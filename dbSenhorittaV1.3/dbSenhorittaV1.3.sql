@@ -245,7 +245,7 @@ carrinho.codigo as código,
 produtos.produto,
 carrinho.quantidade,
 (produtos.custo + ((produtos.custo * produtos.lucro)/100)) as venda,
-((produtos.custo + ((produtos.custo * produtos.lucro)/100)) * carrinho.quantidade)  as subtotal, 
+((produtos.custo + ((produtos.custo * produtos.lucro)/100)) * carrinho.quantidade)  as subtotal
 from (carrinho inner join pedidos on carrinho.pedido = pedidos.pedido)
 inner join produtos on carrinho.codigo = produtos.codigo;
 
