@@ -1,7 +1,3 @@
-/* OBSERVAÇÃO:
-Professor, caso esteja vendo este script para corrigi-lo, acabei de terminá-lo em casa e amanhã (sexta-feira, dia 09/06) irei para o SENAC
-e gerarei sua engenharia reversa (Diagrama Entidade Relacionamento) e documentação*/
-
 /*
 	Database - Loja Senhoritta
     @author Pamella Pereto
@@ -120,6 +116,14 @@ select * from produtos where estoque < estoquemin;
 select codigo, produto, fabricante,
 estoque, estoquemin as estoque_mínimo, custo, lucro
 from produtos where estoque < estoquemin;
+
+-- Relatório de estoque (há quanto tempo o produto encontra-se estocado)
+-- datediff() ➙ calcular a diferença em dias
+-- curdate() ➙ obtém a data atual
+select codigo,produto,
+date_format(datacad, '%d/%m/%Y') as data_cadastro,
+datediff(datacad, curdate()) as diasEmEstoque
+from produtos;
 
 create table clientes (
  idcli int primary key auto_increment,
